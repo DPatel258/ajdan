@@ -135,20 +135,15 @@ function showSuccess()
     <head>
         <meta charset="UTF-8">
         <title>Thank You</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
-        <style>
-            body { font-family: "Cairo", sans-serif; background-color: #f5f7fa; text-align: center; padding: 50px; }
-            .card { background: white; padding: 40px; border-radius: 10px; max-width: 500px; margin: auto; box-shadow: 0px 5px 20px rgba(0,0,0,0.1); }
-            h1 { color: #2d6a4f; }
-            p { color: #555; }
-            .btn { display: inline-block; padding: 10px 20px; background: #2d6a4f; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }
-            .btn:hover { background: #1b4332; }
-        </style>
     </head>
-    <body>
+    <body class="message-body">
         <div class="card">
             <h1>🎉 Thank You!</h1>
-            <p>Your response has been recorded successfully.</p>
+            <span>Your response has been recorded successfully.</span>
             <a href="index.php" class="btn">Go Back</a>
         </div>
     </body>
@@ -163,20 +158,14 @@ function showError($message)
     <head>
         <meta charset="UTF-8">
         <title>Error</title>
+        <link rel="icon" type="image/x-icon" href="favicon.png">
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
-        <style>
-            body { font-family: "Cairo", sans-serif; background-color: #fff5f5; text-align: center; padding: 50px; }
-            .card { background: white; padding: 40px; border-radius: 10px; max-width: 500px; margin: auto; box-shadow: 0px 5px 20px rgba(0,0,0,0.1); }
-            h1 { color: #d00000; }
-            p { color: #555; }
-            .btn { display: inline-block; padding: 10px 20px; background: #d00000; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }
-            .btn:hover { background: #9d0208; }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="message-body">
         <div class="card">
             <h1>⚠️ Error</h1>
-            <p>' . htmlspecialchars($message) . '</p>
+            <span>' . htmlspecialchars($message) . '</span>
             <a href="index.php" class="btn">Try Again</a>
         </div>
     </body>
