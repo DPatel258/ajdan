@@ -80,6 +80,9 @@ $phone = $_POST['mobile_number'] ?? null;
 
 // Get dynamic question responses
 $responses = [];
+$answer1 = $_POST['question_1'] ?? '';
+$answer2 = $_POST['question_2'] ?? '';
+$comment = $_POST['comment'] ?? '';
 foreach ($_POST as $key => $value) {
     if (strpos($key, 'question_') === 0) {
         $responses[$key] = $value;
@@ -91,18 +94,21 @@ $responsesJson = json_encode($responses);
 
 // Insert into DB
 $stmt = $conn->prepare("INSERT INTO form_responses (
-    unique_id, name, phone_number, responses,
+    unique_id, name, phone_number, responses,answer_1,answer_2,comment,
     ip_address, country, region, city,
     platform, device_type, browser_details, screen_resolution,
     timestamp_utc, session_id
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
 
 $stmt->bind_param(
-    "ssssssssssssss",
+    "sssssssssssssssss",
     $uniqueId,
     $name,
     $phone,
     $responsesJson,
+    $answer1,
+    $answer2,
+    $comment,
     $ip,
     $location['country'],
     $location['region'],

@@ -98,11 +98,13 @@ function showErrorPage($message)
     <div class="logo">
         <!-- <img src="ajdan-logo-white.png" alt="Ajdan Logo"> -->
         <h1>جمعية ملاك اجدان رايز</h1>
+        <h2 dir="rtl" class="association_number"> رقم الجمعية :3441400400</h2>
+
     </div>
 
-    <div class="page-title">
+    <!-- <div class="page-title">
         نموذج اختيار عضو جمعية "أجدان رايز" للترشح لعضوية مجلس الإدارة
-    </div>
+    </div> -->
 
     <div class="form-description">
         حرصًا على تعزيز مشاركة الملاك في إدارة جمعية "أجدان رايز" وتحقيق أفضل تمثيل لمصالحهم، يسرنا دعوتكم لإبداء رغبتكم في الترشح لعضوية مجلس الإدارة، أو الاعتذار عن الترشح، وفق الضوابط والمعايير المعتمدة.
@@ -162,7 +164,7 @@ function showErrorPage($message)
             <?php endforeach; ?>
             <input type="hidden" name="screen_resolution" id="screen_resolution">
 
-            <textarea name="desc" id="desc" rows="4"></textarea>
+            <textarea name="comment" id="comment" rows="4"></textarea>
 
             <div class="checkbox-container">
                 <input type="checkbox" name="newsletter" id="newsletter">
@@ -190,7 +192,7 @@ function showErrorPage($message)
 
         <!-- Form Footer -->
         <div class="form-footer">
-            920000658:في حال واجهتك أي مشكلة تقنية أثناء تعبئة النموذج، يرجى التواصل على الرقم
+            في حال واجهتك أي مشكلة تقنية أثناء تعبئة النموذج، يرجى التواصل على الرقم<span>:920000658</span>
         </div>
     </div>
 

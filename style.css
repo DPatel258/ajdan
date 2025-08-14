@@ -20,6 +20,14 @@ body {
     font-size: 16px;
     font-weight: 400;
 }
+.association_number{
+    padding:10px;
+    background-color: #2b3a48;
+    border: 1px solid #2b3a48;
+    text-align: center;
+    border-radius: 8px;
+
+}
 
 .logo {
     height: 100px;
