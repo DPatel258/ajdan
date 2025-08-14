@@ -64,60 +64,14 @@ function showErrorPage($message)
         <meta charset="UTF-8">
         <title>خطأ</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                font-family: 'Cairo', sans-serif;
-                background: #0d141f;
-                color: #fff;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                text-align: center;
-            }
-
-            .form-description {
-                font-size: 15px;
-                color: #ddd;
-                max-width: 720px;
-                text-align: center;
-                line-height: 1.6;
-                margin-bottom: 25px;
-            }
-
-            .error-box {
-                background: rgba(255, 255, 255, 0.05);
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-                max-width: 400px;
-            }
-
-            h1 {
-                font-size: 22px;
-                margin-bottom: 15px;
-            }
-
-            a {
-                display: inline-block;
-                margin-top: 15px;
-                padding: 10px 20px;
-                background: #00b4a2;
-                color: #fff;
-                text-decoration: none;
-                border-radius: 8px;
-            }
-
-            a:hover {
-                background: #00c8b2;
-            }
-        </style>
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <link rel="stylesheet" href="style.css">
     </head>
 
-    <body>
+    <body class="message-body">
         <div class="error-box">
             <h1>⚠️ حدث خطأ</h1>
-            <p><?= htmlspecialchars($message) ?></p>
+            <span><?= htmlspecialchars($message) ?></span>
             <a href="/">العودة إلى الصفحة الرئيسية</a>
         </div>
     </body>
@@ -134,145 +88,17 @@ function showErrorPage($message)
     <meta charset="UTF-8">
     <title>Ajdan Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        .reset-btn {
-            background: linear-gradient(135deg, #777, #555);
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            border-radius: 10px;
-            cursor: pointer;
-            flex: 1;
-        }
-
-        .reset-btn:hover {
-            background: linear-gradient(135deg, #999, #777);
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Cairo', sans-serif;
-            background: #0d141f url('https://darah.ajdan.com/assets/images/bg-pattern.png') repeat;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            flex-direction: column;
-        }
-
-        .page-title {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #00b4a2;
-        }
-
-        .form-description {
-            font-size: 15px;
-            color: #ddd;
-            max-width: 720px;
-            text-align: center;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .form-wrapper {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 40px 35px;
-            border-radius: 16px;
-            max-width: 720px;
-            width: 100%;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .logo img {
-            max-height: 80px;
-        }
-
-        .form-title {
-            text-align: center;
-            font-size: 22px;
-            margin-bottom: 30px;
-        }
-
-        form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        select {
-            background-color: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 14px;
-            color: #fff;
-            font-size: 15px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: #00b4a2;
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .checkbox-container {
-            grid-column: 1 / -1;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-        }
-
-        .static-section {
-            grid-column: 1 / -1;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #ddd;
-            line-height: 1.6;
-        }
-
-        .submit-btn {
-            grid-column: 1 / -1;
-            background: linear-gradient(135deg, #00b4a2, #009b88);
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .form-footer {
-            margin-top: 15px;
-            font-size: 13px;
-            text-align: center;
-            color: #bbb;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <div class="logo">
+        <!-- <img src="ajdan-logo-white.png" alt="Ajdan Logo"> -->
+        <h1>جمعية ملاك اجدان رايز</h1>
+    </div>
 
     <div class="page-title">
         نموذج اختيار عضو جمعية "أجدان رايز" للترشح لعضوية مجلس الإدارة
@@ -283,55 +109,60 @@ function showErrorPage($message)
         علمًا بأن عدد المقاعد المتاحة هو (4) أعضاء، بالإضافة إلى منصب رئاسة الجمعية الذي تتولاه شركة صندوق أجدان للتطوير العقاري.
     </div>
 
+    <div class="line"></div>
+
     <div class="form-wrapper">
-        <div class="logo">
-            <img src="ajdan_logo.png" alt="Ajdan Logo">
-        </div>
 
         <form action="submit.php" method="post" autocomplete="off">
             <input type="hidden" name="unique_id" value="<?php echo htmlspecialchars($_GET['unique_id']); ?>">
 
-            <?php foreach ($textFields as $f): ?>
-                <?php
-                $fieldName = strtolower($f['name']);
-                $prefillValue = '';
+            <div class="read-only-field">
+                <?php foreach ($textFields as $f): ?>
+                    <?php
+                    $fieldName = strtolower($f['name']);
+                    $prefillValue = '';
 
-                if ($fieldName === 'name') {
-                    $prefillValue = htmlspecialchars($userName);
-                } elseif ($fieldName === 'mobile_number') {
-                    $prefillValue = htmlspecialchars($userPhone);
-                }
-                ?>
-                <input
-                    type="<?= strtolower($f['name']) === 'email' ? 'email' : 'text' ?>"
-                    name="<?= htmlspecialchars($f['name']) ?>"
-                    value="<?= $prefillValue ?>"
-                    placeholder="<?= htmlspecialchars($f['label']) ?>"
-                    readonly>
-            <?php endforeach; ?>
+                    if ($fieldName === 'name') {
+                        $prefillValue = htmlspecialchars($userName);
+                    } elseif ($fieldName === 'mobile_number') {
+                        $prefillValue = htmlspecialchars($userPhone);
+                    }
+                    ?>
+                    <input
+                        type="<?= strtolower($f['name']) === 'email' ? 'email' : 'text' ?>"
+                        name="<?= htmlspecialchars($f['name']) ?>"
+                        value="<?= $prefillValue ?>"
+                        placeholder="<?= htmlspecialchars($f['label']) ?>"
+                        readonly>
+                <?php endforeach; ?>
+            </div>
 
             <?php foreach ($questions as $q): ?>
-                <div class="question-block" style="grid-column: 1 / -1;">
-                    <label style="display:block; font-weight:bold; margin-bottom:8px;">
+                <div class="question-block">
+                    <label class="label-title">
                         <?= htmlspecialchars($q['question']) ?>
                     </label>
-                    <?php
-                    $opts = array_filter(array_map('trim', explode(',', $q['options'])));
-                    foreach ($opts as $i => $opt):
-                        $radioId = htmlspecialchars($q['name'] . '_' . $i);
-                    ?>
-                        <div style="margin-bottom:6px;">
-                            <input type="radio"
-                                id="<?= $radioId ?>"
-                                name="<?= htmlspecialchars($q['name']) ?>"
-                                value="<?= htmlspecialchars($opt) ?>"
-                                required>
-                            <label for="<?= $radioId ?>" style="margin-right:6px;"><?= htmlspecialchars($opt) ?></label>
-                        </div>
-                    <?php endforeach; ?>
+                    <div>
+                        <?php
+                        $opts = array_filter(array_map('trim', explode(',', $q['options'])));
+                        foreach ($opts as $i => $opt):
+                            $radioId = htmlspecialchars($q['name'] . '_' . $i);
+                        ?>
+                            <div class="radio-buttons">
+                                <input type="radio"
+                                    id="<?= $radioId ?>"
+                                    name="<?= htmlspecialchars($q['name']) ?>"
+                                    value="<?= htmlspecialchars($opt) ?>"
+                                    required>
+                                <label for="<?= $radioId ?>"><?= htmlspecialchars($opt) ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             <?php endforeach; ?>
             <input type="hidden" name="screen_resolution" id="screen_resolution">
+
+            <textarea name="desc" id="desc" rows="4"></textarea>
 
             <div class="checkbox-container">
                 <input type="checkbox" name="newsletter" id="newsletter">
@@ -340,14 +171,18 @@ function showErrorPage($message)
 
             <!-- Static Section -->
             <div class="static-section">
-                <strong>عايير المفاضلة بين المرشحي</strong><br><br>
-                المساحة المملوكة (تُعطى الأفضلية لمالك المساحة الأكبر).<br><br>
-                الأقدمية (الأولوية للأقدم في التملك).<br><br>
-                الإقامة (الأفضلية للمقيمين في البرج على غير المقيمين).
+                <span class="label-title">عايير المفاضلة بين المرشحي</span>
+                <ul>
+                    <li>المساحة المملوكة (تُعطى الأفضلية لمالك المساحة الأكبر).</li>
+                    <li>الأقدمية (الأولوية للأقدم في التملك).</li>
+                    <li>الإقامة (الأفضلية للمقيمين في البرج على غير المقيمين).</li>
+                </ul>
             </div>
 
+            <div class="line line-inside"></div>
+
             <!-- Submit & Reset Buttons -->
-            <div style="grid-column: 1 / -1; display: flex; gap: 10px;">
+            <div class="buttons">
                 <button type="submit" class="submit-btn">إرسال</button>
                 <button type="button" onclick="window.location.href=window.location.href;" class="reset-btn">إعادة تعيين</button>
             </div>
