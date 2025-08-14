@@ -75,7 +75,17 @@ body {
 .form-wrapper {
     width: 100%;
 }
-
+.label-input{
+    display: flex;
+    flex-direction: column;
+    
+}
+.label-input label {
+    margin-bottom:10px;
+    color: #9ca3af;
+        font-size: 18px;
+    font-weight: 600;
+}
 form {
     display: flex;
     gap: 30px;

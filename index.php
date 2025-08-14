@@ -35,6 +35,15 @@ $userId = $user['id'];
 $userName = $user['name'] ?? '';
 $userPhone = $user['mobile_number'] ?? '';
 // --- Fetch fields from DB ---
+
+$unitNumbers = [];
+$unitRes = mysqli_query($conn, "SELECT unit_number FROM unit_numbers WHERE userid = {$userId}");
+if ($unitRes) {
+    while ($u = mysqli_fetch_assoc($unitRes)) {
+        $unitNumbers[] = $u['unit_number'];
+    }
+}
+$unitNumbersStr = implode(', ', $unitNumbers); // e.g. "101, 102, 205"
 $textFieldsRes = mysqli_query($conn, "SELECT label, name FROM form_fields ORDER BY id ASC");
 $questionsRes = mysqli_query($conn, "SELECT question, options, name FROM form_questions ORDER BY id ASC");
 
@@ -126,16 +135,21 @@ function showErrorPage($message)
 
                     if ($fieldName === 'name') {
                         $prefillValue = htmlspecialchars($userName);
+                        $label = ' الاسم';
                     } elseif ($fieldName === 'mobile_number') {
-                        $prefillValue = htmlspecialchars($userPhone);
+                        $prefillValue = htmlspecialchars($unitNumbersStr);
+                        $label = 'رقم الوحدة';
                     }
                     ?>
-                    <input
-                        type="<?= strtolower($f['name']) === 'email' ? 'email' : 'text' ?>"
-                        name="<?= htmlspecialchars($f['name']) ?>"
-                        value="<?= $prefillValue ?>"
-                        placeholder="<?= htmlspecialchars($f['label']) ?>"
-                        readonly>
+                    <div class="label-input">
+                        <label class=""><?= $label ?></label>
+                        <input
+                            type="<?= strtolower($f['name']) === 'email' ? 'email' : 'text' ?>"
+                            name="<?= htmlspecialchars($f['name']) ?>"
+                            value="<?= $prefillValue ?>"
+                            placeholder="<?= htmlspecialchars($f['label']) ?>"
+                            readonly>
+                    </div>
                 <?php endforeach; ?>
             </div>
 
@@ -164,12 +178,12 @@ function showErrorPage($message)
             <?php endforeach; ?>
             <input type="hidden" name="screen_resolution" id="screen_resolution">
 
-            <textarea name="comment" id="comment" rows="4"></textarea>
+            <textarea placeholder="ملاحظات" name="comment" id="comment" rows="4"></textarea>
 
-            <div class="checkbox-container">
+            <!-- <div class="checkbox-container">
                 <input type="checkbox" name="newsletter" id="newsletter">
                 <label for="newsletter">أوافق على سياسة التواصل من قبل فريق اجدان</label>
-            </div>
+            </div> -->
 
             <!-- Static Section -->
             <div class="static-section">

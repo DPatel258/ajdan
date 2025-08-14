@@ -90,21 +90,32 @@ foreach ($_POST as $key => $value) {
 }
 // Convert responses to JSON
 $responsesJson = json_encode($responses);
+// ✅ Check if already submitted
+$checkStmt = $conn->prepare("SELECT COUNT(*) FROM form_responses WHERE unique_id = ?");
+$checkStmt->bind_param("s", $uniqueId);
+$checkStmt->execute();
+$checkStmt->bind_result($count);
+$checkStmt->fetch();
+$checkStmt->close();
+
+if ($count > 0) {
+    showError("تم إرسال الرد بالفعل");
+    exit;
+}
 
 
 // Insert into DB
 $stmt = $conn->prepare("INSERT INTO form_responses (
-    unique_id, name, phone_number, responses,answer_1,answer_2,comment,
+    unique_id, name, responses,answer_1,answer_2,comment,
     ip_address, country, region, city,
     platform, device_type, browser_details, screen_resolution,
     timestamp_utc, session_id
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
 
 $stmt->bind_param(
-    "sssssssssssssssss",
+    "ssssssssssssssss",
     $uniqueId,
     $name,
-    $phone,
     $responsesJson,
     $answer1,
     $answer2,
