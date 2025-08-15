@@ -76,7 +76,9 @@ $sessionId = session_id();
 // Get form data
 $uniqueId = $_POST['unique_id'] ?? null;
 $name = $_POST['name'] ?? null;
-$phone = $_POST['mobile_number'] ?? null;
+$userCheck = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = '$uniqueId' LIMIT 1");
+$user = mysqli_fetch_assoc($userCheck);
+$phone = $user['mobile_number'] ?? null;
 
 // Get dynamic question responses
 $responses = [];
@@ -106,17 +108,18 @@ if ($count > 0) {
 
 // Insert into DB
 $stmt = $conn->prepare("INSERT INTO form_responses (
-    unique_id, name, responses,answer_1,answer_2,comment,
+    unique_id, name, responses,phone_number,answer_1,answer_2,comment,
     ip_address, country, region, city,
     platform, device_type, browser_details, screen_resolution,
     timestamp_utc, session_id
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
 
 $stmt->bind_param(
-    "ssssssssssssssss",
+    "sssssssssssssssss",
     $uniqueId,
     $name,
     $responsesJson,
+    $phone,
     $answer1,
     $answer2,
     $comment,
